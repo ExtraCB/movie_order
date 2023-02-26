@@ -90,7 +90,7 @@ if(isset($_POST['login'])){
 
 
 <body>
-    <h2>E-Document</h2>
+    <h2>Movie Ticket</h2>
     <?php  include('./../components/error_alert.php'); ?>
 
     <div class="container" id="container">
