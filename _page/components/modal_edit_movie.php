@@ -50,7 +50,14 @@
                             </select>
                             <label data-error="wrong" data-success="right" for="defaultForm-email">Type Movie</label>
                         </div>
-                        <button class="btn btn-warning" name="edit">Edit</button>
+                        <div>
+                            <button class="btn btn-warning" name="edit">Edit</button>
+                            <?php if($movie -> status_m != 0) { ?>
+                            <button class="btn btn-secondary" name="disabled">Disabled</button>
+                            <?php } else { ?>
+                            <button class="btn btn-success" name="active">Active</button>
+                            <?php } ?>
+                        </div>
                     </div>
                     <div class="row mt-5">
                         <h4>Add Showtime</h4>

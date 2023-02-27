@@ -58,7 +58,7 @@ if(isset($_GET['id_seat'],$_SESSION['st'])){
                 <?php
                 
                 $db2 = new database();
-                $db2 -> select("movie,type_movies","*","type_m = id_mtype");
+                $db2 -> select("movie,type_movies","*","type_m = id_mtype AND status_m != 0");
                 while($movie = $db2 -> query -> fetch_object()){
                 ?>
                 <div class="col">

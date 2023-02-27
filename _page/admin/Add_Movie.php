@@ -73,6 +73,32 @@ if(isset($_POST['edit'])){
 }
 
 
+if(isset($_POST['disabled'])){
+    $id_m = $_POST['id_m'];
+
+    $db -> update("movie",['status_m' => 0],"id_m = $id_m");
+    if($db -> query){
+        $_SESSION['success'] = "Movie Disabled !";
+        header('location:'.$_SERVER['REQUEST_URI']);
+    }else{
+        $_SESSION['success'] = "Movie Disabled Failed !";
+        header('location:'.$_SERVER['REQUEST_URI']);
+    }
+}
+
+if(isset($_POST['active'])){
+    $id_m = $_POST['id_m'];
+
+    $db -> update("movie",['status_m' => 1],"id_m = $id_m");
+    if($db -> query){
+        $_SESSION['success'] = "Movie actived !";
+        header('location:'.$_SERVER['REQUEST_URI']);
+    }else{
+        $_SESSION['success'] = "Movie actived Failed !";
+        header('location:'.$_SERVER['REQUEST_URI']);
+    }
+}
+
 if(isset($_POST['showtime'])){
     $time = $_POST['time'];
     $id_showtime = rand();
@@ -160,9 +186,9 @@ if(isset($_POST['remove'])){
                 $movie_db -> select("movie,type_movies","*","type_m = id_mtype");
                 while($movie = $movie_db -> query -> fetch_object()){ ?>
                 <div class="col">
-                    <div class="card h-100" style="width: 18rem; " >
-                        <img src="./../../file/<?= $movie -> file_m ?>" class="card-img-top"
-                            alt="Sunset Over the Sea" style="width:auto; height:150px;"/>
+                    <div class="card h-100" style="width: 18rem; ">
+                        <img src="./../../file/<?= $movie -> file_m ?>" class="card-img-top" alt="Sunset Over the Sea"
+                            style="width:auto; height:150px;" />
                         <div class="card-body">
                             <p class="card-text"><?= $movie -> name_m ?></p>
                             <p class="card-text">Type : <?= $movie -> name_mtype ?></p>
